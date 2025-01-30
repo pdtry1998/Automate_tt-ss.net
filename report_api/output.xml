@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.5 on darwin)" generated="2025-01-13T17:44:50.284756" rpa="false" schemaversion="5">
+<suite id="s1" name="Test" source="/Users/spoton_user/Desktop/Test">
+<suite id="s1-s1" name="TestScript" source="/Users/spoton_user/Desktop/Test/TestScript">
+<suite id="s1-s1-s1" name="API" source="/Users/spoton_user/Desktop/Test/TestScript/API.robot">
+<kw name="Start Video Recording" owner="ScreenCapLibrary" type="SETUP">
+<msg time="2025-01-13T17:44:53.558732" level="INFO">Automatically setting a fps of 5.5</msg>
+<doc>Starts the recording of a video in the background with the specified ``name``.
+The recording can be stopped by calling the `Stop Video Recording` keyword.</doc>
+<status status="PASS" start="2025-01-13T17:44:51.234885" elapsed="2.324504"/>
+</kw>
+<test id="s1-s1-s1-t1" name="Get User Id Verify Id And Email" line="14">
+<kw name="Get User Id" owner="API_Keyword">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.560965" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.560765" elapsed="0.000229"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-01-13T17:44:53.837306" level="INFO">GET Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2025-01-13T17:44:53.837451" level="INFO">GET Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 13 Jan 2025 10:44:53 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1736764896&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=VNXG34FM8mwmL2fByU0trucMvsmDIHKqN8INiPExxb0%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1736764896&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=VNXG34FM8mwmL2fByU0trucMvsmDIHKqN8INiPExxb0%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"152-ApQgGHL6RKwaebFlrPCYPBO1xHg"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '197', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '9014cb2c189a0c87-URT', 'Content-Encoding': 'gzip', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=24636&amp;min_rtt=23123&amp;rtt_var=9752&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2833&amp;recv_bytes=802&amp;delivery_rate=174890&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=72c53eacf8ce7bbe&amp;ts=46&amp;x=0"'} 
+ body={"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://contentcaddy.io?utm_source=reqres&amp;utm_medium=json&amp;utm_campaign=referral","text":"Tired of writing endless social media content? Let Content Caddy generate it for you."}} 
+ </msg>
+<msg time="2025-01-13T17:44:53.837584" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>headers=${header}</arg>
+<arg>url=https://reqres.in/api/users/${user_id}</arg>
+<arg>data=${EMPTY}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.561106" elapsed="0.276505"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.838316" level="INFO">${json_resp} = {'data': {'id': 2, 'email': 'janet.weaver@reqres.in', 'first_name': 'Janet', 'last_name': 'Weaver', 'avatar': 'https://reqres.in/img/faces/2-image.jpg'}, 'support': {'url': 'https://contentcaddy.io?ut...</msg>
+<var>${json_resp}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.837800" elapsed="0.000545"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.838854" level="INFO">${text_resp} = {"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://contentcaddy.io?utm_source=reqr...</msg>
+<var>${text_resp}</var>
+<arg>${response.text}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.838469" elapsed="0.000412"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${json_resp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.838997" elapsed="0.000180"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.840124" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${response_status}</arg>
+<arg>url=${response.url}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.839306" elapsed="0.000902"/>
+</kw>
+<if>
+<branch type="IF" condition="${response.status_code} == 200">
+<kw name="Get Value From Json And Set Variable" owner="Redefine_Keyword">
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-01-13T17:44:53.858180" level="INFO">${id} = [2]</msg>
+<var>${id}</var>
+<arg>${json}</arg>
+<arg>${json_path}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-01-13T17:44:53.841222" elapsed="0.016999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.858684" level="INFO">${value} = 2</msg>
+<var>${value}</var>
+<arg>${id}[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.858432" elapsed="0.000280"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-01-13T17:44:53.858779" elapsed="0.000070"/>
+</return>
+<msg time="2025-01-13T17:44:53.858988" level="INFO">${id} = 2</msg>
+<var>${id}</var>
+<arg>${json_resp}</arg>
+<arg>$.data.id</arg>
+<status status="PASS" start="2025-01-13T17:44:53.840880" elapsed="0.018132"/>
+</kw>
+<kw name="Get Value From Json And Set Variable" owner="Redefine_Keyword">
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-01-13T17:44:53.873168" level="INFO">${id} = ['janet.weaver@reqres.in']</msg>
+<var>${id}</var>
+<arg>${json}</arg>
+<arg>${json_path}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-01-13T17:44:53.859459" elapsed="0.013751"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.873594" level="INFO">${value} = janet.weaver@reqres.in</msg>
+<var>${value}</var>
+<arg>${id}[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.873389" elapsed="0.000232"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-01-13T17:44:53.873681" elapsed="0.000049"/>
+</return>
+<msg time="2025-01-13T17:44:53.873867" level="INFO">${email} = janet.weaver@reqres.in</msg>
+<var>${email}</var>
+<arg>${json_resp}</arg>
+<arg>$.data.email</arg>
+<status status="PASS" start="2025-01-13T17:44:53.859177" elapsed="0.014714"/>
+</kw>
+<status status="PASS" start="2025-01-13T17:44:53.840352" elapsed="0.033598"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${id}</var>
+<arg>Null</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-01-13T17:44:53.874138" elapsed="0.000027"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${email}</var>
+<arg>Null</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-01-13T17:44:53.874263" elapsed="0.000024"/>
+</kw>
+<status status="NOT RUN" start="2025-01-13T17:44:53.874001" elapsed="0.000405"/>
+</branch>
+<status status="PASS" start="2025-01-13T17:44:53.840313" elapsed="0.034135"/>
+</if>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.874749" level="INFO">${id} = 2</msg>
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.874558" elapsed="0.000231"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.875040" level="INFO">${email} = janet.weaver@reqres.in</msg>
+<arg>${email}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.874897" elapsed="0.000180"/>
+</kw>
+<arg>${UserId}</arg>
+<status status="PASS" start="2025-01-13T17:44:53.560412" elapsed="0.314726"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.875484" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${id}</arg>
+<arg>${UserId}</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.875334" elapsed="0.000212"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${email}</arg>
+<arg>${expectedEmail}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.875700" elapsed="0.000189"/>
+</kw>
+<tag>api</tag>
+<status status="PASS" start="2025-01-13T17:44:53.559603" elapsed="0.316447"/>
+</test>
+<test id="s1-s1-s1-t2" name="Create User" line="20">
+<kw name="Create User" owner="API_Keyword">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-01-13T17:44:53.877356" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.877169" elapsed="0.000216"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-01-13T17:44:54.643443" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '33'} 
+ body={"name": "Teerayut", "job": "Qa"} 
+ </msg>
+<msg time="2025-01-13T17:44:54.643528" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Mon, 13 Jan 2025 10:44:54 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '80', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1736765094&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=EjYh6Bbi8lrfw8BXJ8auTHoU7rCOpjvWf%2B4tpTdwqyw%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1736765094&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=EjYh6Bbi8lrfw8BXJ8auTHoU7rCOpjvWf%2B4tpTdwqyw%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"50-5OmVtf4xReJOdYoUkHXmi+oh2bY"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '9014cb2dcb4f87dc-URT', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=20120&amp;min_rtt=20009&amp;rtt_var=7726&amp;sent=5&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2834&amp;recv_bytes=876&amp;delivery_rate=193502&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=b7fc98e698681df9&amp;ts=620&amp;x=0"'} 
+ body={"name":"Teerayut","job":"Qa","id":"222","createdAt":"2025-01-13T10:44:54.499Z"} 
+ </msg>
+<msg time="2025-01-13T17:44:54.643637" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>headers=${header}</arg>
+<arg>url=https://reqres.in/api/users</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-01-13T17:44:53.877504" elapsed="0.766157"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:54.644362" level="INFO">${json_resp} = {'name': 'Teerayut', 'job': 'Qa', 'id': '222', 'createdAt': '2025-01-13T10:44:54.499Z'}</msg>
+<var>${json_resp}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.643903" elapsed="0.000485"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:54.644849" level="INFO">${text_resp} = {"name":"Teerayut","job":"Qa","id":"222","createdAt":"2025-01-13T10:44:54.499Z"}</msg>
+<var>${text_resp}</var>
+<arg>${response.text}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.644495" elapsed="0.000377"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${json_resp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.644971" elapsed="0.000152"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-01-13T17:44:54.646097" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${response_status}</arg>
+<arg>url=${response.url}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.645270" elapsed="0.000909"/>
+</kw>
+<if>
+<branch type="IF" condition="${response.status_code} == 201">
+<kw name="Get Value From Json And Set Variable" owner="Redefine_Keyword">
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-01-13T17:44:54.661205" level="INFO">${id} = ['Teerayut']</msg>
+<var>${id}</var>
+<arg>${json}</arg>
+<arg>${json_path}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-01-13T17:44:54.648066" elapsed="0.013178"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:54.661608" level="INFO">${value} = Teerayut</msg>
+<var>${value}</var>
+<arg>${id}[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.661413" elapsed="0.000221"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-01-13T17:44:54.661691" elapsed="0.000045"/>
+</return>
+<msg time="2025-01-13T17:44:54.661854" level="INFO">${actual_name} = Teerayut</msg>
+<var>${actual_name}</var>
+<arg>${json_resp}</arg>
+<arg>$.name</arg>
+<status status="PASS" start="2025-01-13T17:44:54.646979" elapsed="0.014896"/>
+</kw>
+<kw name="Get Value From Json And Set Variable" owner="Redefine_Keyword">
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-01-13T17:44:54.676376" level="INFO">${id} = ['Qa']</msg>
+<var>${id}</var>
+<arg>${json}</arg>
+<arg>${json_path}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-01-13T17:44:54.662292" elapsed="0.014125"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:54.676799" level="INFO">${value} = Qa</msg>
+<var>${value}</var>
+<arg>${id}[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.676593" elapsed="0.000233"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-01-13T17:44:54.676885" elapsed="0.000056"/>
+</return>
+<msg time="2025-01-13T17:44:54.677068" level="INFO">${actual_job} = Qa</msg>
+<var>${actual_job}</var>
+<arg>${json_resp}</arg>
+<arg>$.job</arg>
+<status status="PASS" start="2025-01-13T17:44:54.662024" elapsed="0.015070"/>
+</kw>
+<status status="PASS" start="2025-01-13T17:44:54.646306" elapsed="0.030834"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${actual_name}</var>
+<arg>Null</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-01-13T17:44:54.677298" elapsed="0.000027"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${actual_job}</var>
+<arg>Null</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-01-13T17:44:54.689018" elapsed="0.000081"/>
+</kw>
+<status status="NOT RUN" start="2025-01-13T17:44:54.677185" elapsed="0.011968"/>
+</branch>
+<status status="PASS" start="2025-01-13T17:44:54.646279" elapsed="0.042916"/>
+</if>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:54.689521" level="INFO">${actual_name} = Teerayut</msg>
+<arg>${actual_name}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.689311" elapsed="0.000254"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:54.689820" level="INFO">${actual_job} = Qa</msg>
+<arg>${actual_job}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.689673" elapsed="0.000183"/>
+</kw>
+<arg>{"name": "${expectedName}", "job": "${expectedJob}"}</arg>
+<status status="PASS" start="2025-01-13T17:44:53.876803" elapsed="0.813118"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_name}</arg>
+<arg>${expected_Name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.690134" elapsed="0.000187"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_job}</arg>
+<arg>${expected_Job}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.690519" elapsed="0.000160"/>
+</kw>
+<tag>api</tag>
+<status status="PASS" start="2025-01-13T17:44:53.876317" elapsed="0.814562"/>
+</test>
+<test id="s1-s1-s1-t3" name="Update User" line="26">
+<kw name="Update User" owner="API_Keyword">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-01-13T17:44:54.692252" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.692038" elapsed="0.000244"/>
+</kw>
+<kw name="PUT" owner="RequestsLibrary">
+<msg time="2025-01-13T17:44:55.271557" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '45'} 
+ body={"name": "UpdateTeerayut", "job": "UpdateQa"} 
+ </msg>
+<msg time="2025-01-13T17:44:55.271645" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 13 Jan 2025 10:44:55 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1736765095&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=wX6eEqLMC4EtV8vgaXdbVhE2fxpfjvfR%2Bip4q%2B4Zb%2B4%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1736765095&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=wX6eEqLMC4EtV8vgaXdbVhE2fxpfjvfR%2Bip4q%2B4Zb%2B4%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"51-h0UUnWJXHpmz7lXDeatFHylsf7U"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '9014cb32cc5d0c87-URT', 'Content-Encoding': 'gzip', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=20153&amp;min_rtt=19776&amp;rtt_var=8171&amp;sent=6&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=2833&amp;recv_bytes=889&amp;delivery_rate=177399&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=ecb173b11a698b37&amp;ts=530&amp;x=0"'} 
+ body={"name":"UpdateTeerayut","job":"UpdateQa","updatedAt":"2025-01-13T10:44:55.223Z"} 
+ </msg>
+<msg time="2025-01-13T17:44:55.271760" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>headers=${header}</arg>
+<arg>url=https://reqres.in/api/users/${user_id}</arg>
+<arg>data=${body}</arg>
+<doc>Sends a PUT request.</doc>
+<status status="PASS" start="2025-01-13T17:44:54.692399" elapsed="0.579387"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:55.272593" level="INFO">${json_resp} = {'name': 'UpdateTeerayut', 'job': 'UpdateQa', 'updatedAt': '2025-01-13T10:44:55.223Z'}</msg>
+<var>${json_resp}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.271966" elapsed="0.000663"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:55.273646" level="INFO">${text_resp} = {"name":"UpdateTeerayut","job":"UpdateQa","updatedAt":"2025-01-13T10:44:55.223Z"}</msg>
+<var>${text_resp}</var>
+<arg>${response.text}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.272778" elapsed="0.000897"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${json_resp}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.273798" elapsed="0.000207"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-01-13T17:44:55.274833" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${response_status}</arg>
+<arg>url=${response.url}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.274143" elapsed="0.000746"/>
+</kw>
+<if>
+<branch type="IF" condition="${response.status_code} == 200">
+<kw name="Get Value From Json And Set Variable" owner="Redefine_Keyword">
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-01-13T17:44:55.290402" level="INFO">${id} = ['UpdateTeerayut']</msg>
+<var>${id}</var>
+<arg>${json}</arg>
+<arg>${json_path}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-01-13T17:44:55.275707" elapsed="0.014801"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:55.291083" level="INFO">${value} = UpdateTeerayut</msg>
+<var>${value}</var>
+<arg>${id}[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.290824" elapsed="0.000290"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-01-13T17:44:55.291253" elapsed="0.000080"/>
+</return>
+<msg time="2025-01-13T17:44:55.291468" level="INFO">${actual_name} = UpdateTeerayut</msg>
+<var>${actual_name}</var>
+<arg>${json_resp}</arg>
+<arg>$.name</arg>
+<status status="PASS" start="2025-01-13T17:44:55.275424" elapsed="0.016074"/>
+</kw>
+<kw name="Get Value From Json And Set Variable" owner="Redefine_Keyword">
+<kw name="Get Value From Json" owner="JSONLibrary">
+<msg time="2025-01-13T17:44:55.306382" level="INFO">${id} = ['UpdateQa']</msg>
+<var>${id}</var>
+<arg>${json}</arg>
+<arg>${json_path}</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<status status="PASS" start="2025-01-13T17:44:55.291950" elapsed="0.014519"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:55.307200" level="INFO">${value} = UpdateQa</msg>
+<var>${value}</var>
+<arg>${id}[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.306911" elapsed="0.000325"/>
+</kw>
+<return>
+<value>${value}</value>
+<status status="PASS" start="2025-01-13T17:44:55.307306" elapsed="0.000045"/>
+</return>
+<msg time="2025-01-13T17:44:55.307479" level="INFO">${actual_job} = UpdateQa</msg>
+<var>${actual_job}</var>
+<arg>${json_resp}</arg>
+<arg>$.job</arg>
+<status status="PASS" start="2025-01-13T17:44:55.291661" elapsed="0.015842"/>
+</kw>
+<status status="PASS" start="2025-01-13T17:44:55.274979" elapsed="0.032652"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" owner="BuiltIn">
+<var>${actual_name}</var>
+<arg>Null</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-01-13T17:44:55.307805" elapsed="0.000028"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${actual_job}</var>
+<arg>Null</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-01-13T17:44:55.307925" elapsed="0.000024"/>
+</kw>
+<status status="NOT RUN" start="2025-01-13T17:44:55.307678" elapsed="0.000315"/>
+</branch>
+<status status="PASS" start="2025-01-13T17:44:55.274959" elapsed="0.033066"/>
+</if>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:55.308288" level="INFO">${actual_name} = UpdateTeerayut</msg>
+<arg>${actual_name}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.308118" elapsed="0.000208"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2025-01-13T17:44:55.308567" level="INFO">${actual_job} = UpdateQa</msg>
+<arg>${actual_job}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.308429" elapsed="0.000174"/>
+</kw>
+<arg>{"name": "Update${expectedName}", "job": "Update${expectedJob}"}</arg>
+<arg>${UserId}</arg>
+<status status="PASS" start="2025-01-13T17:44:54.691651" elapsed="0.617010"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_name}</arg>
+<arg>Update${expected_Name}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.308836" elapsed="0.000237"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${actual_job}</arg>
+<arg>Update${expected_Job}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.309271" elapsed="0.000205"/>
+</kw>
+<tag>api</tag>
+<status status="PASS" start="2025-01-13T17:44:54.691178" elapsed="0.618462"/>
+</test>
+<test id="s1-s1-s1-t4" name="Delete User" line="32">
+<kw name="Delete User" owner="API_Keyword">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-01-13T17:44:55.310735" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.310566" elapsed="0.000195"/>
+</kw>
+<kw name="DELETE" owner="RequestsLibrary">
+<msg time="2025-01-13T17:44:56.075959" level="INFO">DELETE Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-01-13T17:44:56.076038" level="INFO">DELETE Response : url=https://reqres.in/api/users/2 
+ status=204, reason=No Content 
+ headers={'Date': 'Mon, 13 Jan 2025 10:44:55 GMT', 'Content-Length': '0', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1736765095&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=wX6eEqLMC4EtV8vgaXdbVhE2fxpfjvfR%2Bip4q%2B4Zb%2B4%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1736765095&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=wX6eEqLMC4EtV8vgaXdbVhE2fxpfjvfR%2Bip4q%2B4Zb%2B4%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '9014cb36aa3987df-URT', 'server-timing': 'cfL4;desc="?proto=TCP&amp;rtt=21468&amp;min_rtt=20551&amp;rtt_var=9542&amp;sent=5&amp;recv=6&amp;lost=0&amp;retrans=0&amp;sent_bytes=2834&amp;recv_bytes=824&amp;delivery_rate=144982&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=c8874753c59a394c&amp;ts=527&amp;x=0"'} 
+ body=None 
+ </msg>
+<msg time="2025-01-13T17:44:56.076200" level="INFO">${response} = &lt;Response [204]&gt;</msg>
+<var>${response}</var>
+<arg>headers=${header}</arg>
+<arg>url=https://reqres.in/api/users/${user_id}</arg>
+<doc>Sends a DELETE request.</doc>
+<status status="PASS" start="2025-01-13T17:44:55.310870" elapsed="0.765358"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-01-13T17:44:56.077158" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${response_status}</arg>
+<arg>url=${response.url}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-01-13T17:44:56.076403" elapsed="0.000810"/>
+</kw>
+<arg>${UserId}</arg>
+<status status="PASS" start="2025-01-13T17:44:55.310275" elapsed="0.767012"/>
+</kw>
+<tag>api</tag>
+<status status="PASS" start="2025-01-13T17:44:55.309850" elapsed="0.767626"/>
+</test>
+<kw name="Stop Video Recording" owner="ScreenCapLibrary" type="TEARDOWN">
+<msg time="2025-01-13T17:44:56.502605" level="INFO" html="true">&lt;a href="recording_2.webm"&gt;&lt;video width="800px" autoplay&gt;&lt;source src="recording_2.webm" type="video/webm"&gt;&lt;/video&gt;&lt;/a&gt;</msg>
+<doc>Stops the video recording corresponding to the given ``alias`` and generates the file in WebM format. If no
+``alias`` is specified, the last opened recording will be closed. If there are more recordings with the same
+alias all of them will be closed. If ``embed`` argument was set to
+``True`` the video will be displayed in the log file.
+Furthermore, if the ``save_to_disk`` parameter is set to ``False``, the video will be embedded and available in
+the log file only.</doc>
+<status status="PASS" start="2025-01-13T17:44:56.078000" elapsed="0.424704"/>
+</kw>
+<status status="PASS" start="2025-01-13T17:44:50.316407" elapsed="6.186362"/>
+</suite>
+<status status="PASS" start="2025-01-13T17:44:50.315123" elapsed="6.188275"/>
+</suite>
+<status status="PASS" start="2025-01-13T17:44:50.286720" elapsed="6.217025"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="0" skip="0">api</stat>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="Test">Test</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s1" name="TestScript">Test.TestScript</stat>
+<stat pass="4" fail="0" skip="0" id="s1-s1-s1" name="API">Test.TestScript.API</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
